@@ -8,16 +8,18 @@ export interface CardProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   className?: string;
   hoverEffect?: boolean;
+  overflowVisible?: boolean;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ children, className, hoverEffect = true, ...props }, ref) => {
+  ({ children, className, hoverEffect = true, overflowVisible = false, ...props }, ref) => {
     return (
       <motion.div
         ref={ref}
         whileHover={hoverEffect ? { y: -5, scale: 1.01 } : {}}
         className={cn(
-          "glass-card relative overflow-hidden transition-all duration-300",
+          "glass-card relative transition-all duration-300",
+          !overflowVisible && "overflow-hidden",
           hoverEffect && "hover:border-cyan-accent/50 hover:shadow-[0_0_30px_rgba(0,245,212,0.15)]",
           className
         )}

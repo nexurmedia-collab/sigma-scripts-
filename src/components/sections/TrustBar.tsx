@@ -41,17 +41,17 @@ export default function TrustBar() {
                 {/* Horizontal Shift on Hover - Disabled for mobile */}
                 <motion.div 
                   whileHover={{ x: isRightShift ? 10 : -10 }}
-                  className={`flex items-center gap-6 sm:gap-8 w-full ${isRightShift ? "flex-row" : "flex-row sm:flex-row-reverse text-center sm:text-right"}`}
+                  className={`flex items-center gap-6 sm:gap-8 w-full ${isRightShift ? "flex-row text-left" : "flex-row sm:flex-row-reverse text-left sm:text-right"}`}
                 >
                   {/* Content Side */}
                   <div className="flex-grow space-y-2">
                     <div className="text-[10px] font-black text-cyan-accent tracking-[0.4em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
                       {stat.label}
                     </div>
-                    <h3 className="font-orbitron text-4xl font-black text-white group-hover:text-cyan-accent transition-colors duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                    <h3 className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-black text-white group-hover:text-cyan-accent transition-colors duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
                       {stat.value}
                     </h3>
-                    <p className={`text-xs text-gray-500 font-medium leading-relaxed max-w-md group-hover:text-gray-400 transition-colors duration-500 ${isRightShift ? "mr-auto" : "ml-auto"}`}>
+                    <p className={`text-[10px] sm:text-xs text-gray-500 font-medium leading-relaxed max-w-md group-hover:text-gray-400 transition-colors duration-500 ${isRightShift ? "mr-auto" : "ml-auto"}`}>
                       {stat.desc}
                     </p>
                   </div>

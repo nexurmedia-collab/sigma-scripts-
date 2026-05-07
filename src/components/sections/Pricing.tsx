@@ -34,15 +34,15 @@ const plans = [
 export default function Pricing() {
   return (
     <SectionWrapper id="pricing">
-      <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-cyan-accent text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Pricing</span>
-        <h2 className="font-orbitron text-4xl font-bold text-white mb-6">Choose Your <span className="text-gradient">Plan</span></h2>
-        <p className="text-gray-400 max-w-2xl">
+      <div className="flex flex-col items-center text-center mb-16 px-4">
+        <span className="text-cyan-accent text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Pricing</span>
+        <h2 className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">Choose Your <span className="text-gradient">Plan</span></h2>
+        <p className="text-gray-400 text-sm md:text-base max-w-2xl">
           Simple, transparent pricing for every level of player. Upgrade your game today.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-6xl mx-auto items-stretch pt-12">
         {plans.map((plan, idx) => (
           <motion.div
             key={idx}
@@ -50,26 +50,27 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="flex"
+            className={`flex ${plan.recommended ? "z-20 scale-100 md:scale-105" : "z-10"}`}
           >
             <Card 
-              className={`p-8 flex flex-col gap-8 w-full transition-all duration-500 ${
+              overflowVisible={plan.recommended}
+              className={`p-6 sm:p-8 flex flex-col gap-8 w-full transition-all duration-500 ${
                 plan.recommended 
-                ? "border-cyan-accent/40 shadow-[0_0_50px_rgba(0,245,212,0.1)] relative" 
-                : "bg-card-bg/30"
+                ? "border-cyan-accent/50 shadow-[0_0_50px_rgba(0,245,212,0.15)] bg-card-bg/40" 
+                : "bg-card-bg/20 border-white/5"
               }`}
             >
               {plan.recommended && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-cyan-accent rounded-full text-background text-[10px] font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(0,245,212,0.5)]">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-cyan-accent rounded-full text-background text-[11px] font-bold uppercase tracking-[0.15em] shadow-[0_0_30px_rgba(0,245,212,0.6)] whitespace-nowrap">
                   Most Popular
                 </div>
               )}
 
               <div className="text-center">
-                <h3 className="text-xl font-bold text-white mb-2 font-orbitron tracking-wide">{plan.name}</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2 font-orbitron tracking-wide">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl font-black text-white">{plan.price}</span>
-                  <span className="text-sm text-gray-500 font-medium">/{plan.duration.split(" ")[1]}</span>
+                  <span className="text-3xl md:text-4xl font-black text-white">{plan.price}</span>
+                  <span className="text-xs md:text-sm text-gray-500 font-medium">/{plan.duration.split(" ")[1]}</span>
                 </div>
               </div>
 
